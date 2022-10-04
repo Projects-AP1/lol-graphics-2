@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ES2016",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "baseUrl": "./src",
+    "paths" : {
+      "@Hooks/*": ["./Hooks/*"],
+      "@Pages/*": ["./Pages/*"],
+      "@Interfaces/*": ["./Interfaces/*"],
+      "@Components/*": ["./Components/*"],
+      "@Utils/*": ["./utils/*"]
+      
+    },
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "ES6",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
+  },
+  "include": [
+    "src"
+  ]
+}

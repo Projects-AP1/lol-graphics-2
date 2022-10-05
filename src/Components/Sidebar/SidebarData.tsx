@@ -12,8 +12,8 @@ export const Sidebardata = [
         icon: <AiFillHome />,
     },
     {
-        path: '/teste',
-        name: "Teste",
+        path: '/summoners',
+        name: "Summoners",
         icon: <AiFillHome />,
     },
     {

@@ -50,7 +50,7 @@ export default function Graphics () : JSX.Element {
     useLayoutEffect(() => {
         const {root, legendRoot} = chartColumn(data);
      
-        return  () => {root && root.dispose(); legendRoot.dispose();}
+        return  () => {root.dispose(); legendRoot.dispose();}
       }, []);
 
       return <>

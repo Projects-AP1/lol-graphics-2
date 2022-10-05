@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 import { Row, Col, ButtonGroup } from "reactstrap";
+import {toast} from 'react-toastify';
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
@@ -27,6 +28,7 @@ export default function SearchSummoner(): JSX.Element {
       summonerLevel,
       img,
     });
+    setIsLoading(false);
   }, [summoner, isLoading]);
 
   const handleInsertSumonner = useCallback(async () => {
@@ -35,10 +37,13 @@ export default function SearchSummoner(): JSX.Element {
       name: summonerData.name,
     };
 
-    const summoner = await InsertSummoner(summonerObj);
-    console.log(summoner);
-    setIsLoading(prev => !prev);
-  }, [summonerData, isLoading]);
+    await InsertSummoner(summonerObj)
+    .then(res => toast.success(res.data.message))
+    .catch((err : any) => toast.error(err.response.data));
+
+    setIsLoading(false);
+    setSummonerData(null)
+  }, [summonerData, isLoading, setIsLoading]);
 
   return (
       <div className="vh-100 w-100 d-flex align-items-center justify-content-center">
@@ -53,6 +58,7 @@ export default function SearchSummoner(): JSX.Element {
             onClick={handleSearch}
             variant="contained"
             className="p-3 rounded-0"
+            disabled={!!summonerData}
           >
             {isLoading ? "loading..." : "Search"}
           </Button>

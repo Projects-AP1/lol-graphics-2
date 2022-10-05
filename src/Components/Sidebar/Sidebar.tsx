@@ -15,8 +15,8 @@ export default function LeftSideBar({children} : any){
    return <div className="d-flex container-sidebar" >
     <div className="sidebar vh-100" style={{width: isOpen ? "200px" : "50px"}}>
       <div className="top_section d-flex align-items-center">
-        <h1 className="logo" style={{display: isOpen ? "block" : "none"}}>Logo</h1>
-        <div className="bars" style={{marginLeft: isOpen ? "50px" : "0px"}}>
+        <h1 className={`logo ${isOpen ? 'd-block' : 'd-none'}`}>Logo</h1>
+        <div className={`bars`} style={{marginLeft: isOpen ? "50px" : "0px"}}>
           {isOpen ? <VscChromeClose onClick={toggle}/> : <FaBars onClick={toggle} />}
         </div>
       </div>

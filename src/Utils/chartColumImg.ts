@@ -4,7 +4,7 @@ import * as am5 from "@amcharts/amcharts5";
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
 
-export default  function chartColumn(data : any) {
+export default  function chartColumn(data : any[]) {
     const root = am5.Root.new("chartdiv");
     const legendRoot = am5.Root.new("legend-div");
 

@@ -1,3 +1,5 @@
+import SearchSummoner from "../SearchSummoner";
+
 export default function RegisterSummoner () {
-    return <>Register Summoner</>
+    return <>{SearchSummoner()}</>
 };

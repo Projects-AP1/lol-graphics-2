@@ -7,3 +7,9 @@ export const InsertSummoner = async(props : SummonerData) : Promise<any> =>
 
 export  const getSumonnerGrath = async() : Promise<any> => 
     await api.get('getSumonnerGrath')
+
+export const GetSummoner = async(name : String) : Promise<any> => 
+    await api.post('/sumonnerApiByName', {
+        name: name,
+      })
+

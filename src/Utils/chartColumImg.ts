@@ -1,10 +1,11 @@
 import * as am5xy from "@amcharts/amcharts5/xy";
 import * as am5 from "@amcharts/amcharts5";
 
+import { SummonerGraphData } from '@Interfaces/index';
 import am5themes_Animated from "@amcharts/amcharts5/themes/Animated";
 
 
-export default  function chartColumn(data : any[]) {
+export default  function chartColumn(data : SummonerGraphData[] | unknown[]) {
     const root = am5.Root.new("chartdiv");
     const legendRoot = am5.Root.new("legend-div");
 

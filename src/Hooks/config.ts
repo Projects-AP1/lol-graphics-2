@@ -1,9 +1,5 @@
 import axios from 'axios';
 
 export const api = axios.create({
-    baseURL: "http://localhost:8080/api/"
+    baseURL: process.env.REACT_APP_API_BASE_URL,
 });
-
-// export const externalApi = axios.create({
-//     baseURL: "https://americas.api.riotgames.com/lol",
-// });

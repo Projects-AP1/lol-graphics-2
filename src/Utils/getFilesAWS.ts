@@ -1,6 +1,5 @@
 import { s3Config } from "../Configs3/s3Config";
 import {
-  ListObjectsV2CommandInput,
   paginateListObjectsV2,
   S3Client,
 } from "@aws-sdk/client-s3";

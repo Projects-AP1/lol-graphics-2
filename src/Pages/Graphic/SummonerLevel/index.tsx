@@ -17,8 +17,7 @@ export default function SummonerLevelGraph(): JSX.Element {
           src: summoner.urlimg
         }
       })));
-    
-      console.log(summonersGraphData.sort())
+  
       setSummonersData(summonersGraphData);
     })();
   }, []);

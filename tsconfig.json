@@ -12,7 +12,9 @@
       "@Pages/*": ["./Pages/*"],
       "@Interfaces/*": ["./Interfaces/*"],
       "@Components/*": ["./Components/*"],
-      "@Utils/*": ["./utils/*"]
+      "@Utils/*": ["./Utils/*"],
+      "@Auth/*": ["./Auth/*"],
+      
       
     },
     "allowJs": true,

@@ -27,7 +27,7 @@ const overlayShow = keyframes({
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: '90vw',
+    width: '100vw',
     maxWidth: '500px',
     maxHeight: '85vh',
     zIndex: '9999',

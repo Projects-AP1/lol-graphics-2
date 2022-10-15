@@ -1,19 +1,16 @@
 import {BrowserRouter, Routes as ReactRoutes, Route, Navigate} from 'react-router-dom';
 
-import SearchSummoner from '@Pages/SearchSummoner';
-import Graphics from '@Pages/Graphic/SummonerLevel';
-import Summoners from '@Pages/Summoners';
-import {SideBar} from '@Components/Sidebar';
+import Login from '@Pages/Register';
+import {isAuthenticated} from '@Auth/index';
+import AuthenticatedLayout from '@Pages/Authenticated/layout';
 
 export default function Routes () {
+    const authenticated = isAuthenticated();
     return <BrowserRouter>
-    <SideBar>
-        <ReactRoutes>
-            <Route path="/" element={<Navigate to="/app"/>} />
-            <Route path="/search" element={<SearchSummoner />}/>
-            <Route path="/graphics" element={<Graphics />}/>
-            <Route path="/summoners" element={<Summoners />}/>
-        </ReactRoutes>
-    </SideBar>
+    <ReactRoutes>
+        <Route path="/"  element={<Navigate to={authenticated ? '/app' : 'app/login'}/>} />
+        <Route path="/app/*" element={authenticated ? <AuthenticatedLayout /> : <Navigate to="/app/login"/>}/>
+        <Route path="/app/login" element={<Login />}/>
+    </ReactRoutes>
 </BrowserRouter>;
 };

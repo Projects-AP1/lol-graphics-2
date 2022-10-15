@@ -4,7 +4,7 @@ import { getSumonnerGrath } from "@Hooks/api";
 
 import { SummonerGraphData } from '@Interfaces/index';
 
-export default function SummonerLevelGraph(): JSX.Element {
+export default function SummonerLevelGraph() {
   const [summonersData, setSummonersData] = useState<SummonerGraphData[]>([]);
 
   useEffect(()=> {
@@ -34,7 +34,7 @@ export default function SummonerLevelGraph(): JSX.Element {
   return (
       <>
         {!summonersData.length && 'Loading...'}
-        <div id="chartdiv" style={{ height: "500px" }}></div>
+        <div id="chartdiv" className="vw-100 vh-100"></div>
         <div id="legend-div"></div>
       </>
   );

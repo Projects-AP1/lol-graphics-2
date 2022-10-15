@@ -2,22 +2,22 @@ import {AiFillHome} from 'react-icons/ai';
 
 export const Sidebardata = [
     {
-        path: '/search',
+        path: '/app/search',
         name: "Home",
         icon: <AiFillHome />,
     },
     {
-        path: '/graphics',
+        path: '/app/graphics',
         name: "Graphics",
         icon: <AiFillHome />,
     },
     {
-        path: '/summoners',
+        path: '/app/summoners',
         name: "Summoners",
         icon: <AiFillHome />,
     },
     {
-        path: '/teste1',
+        path: '/app/teste1',
         name: "Teste1",
         icon: <AiFillHome />,
     },

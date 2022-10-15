@@ -4,20 +4,21 @@ import {VscChromeClose} from 'react-icons/vsc';
 import {Link} from 'react-router-dom';
 
 import {Sidebardata} from './SidebarData';
+import {useAppContext} from '@Components/container';
 
-export default function LeftSideBar({children} : any){
-  const[isOpen, setIsOpen] = useState<boolean>(false);
+export default function LeftSideBar(){
+  const {isSideBar, setIsSideBar} = useAppContext();
   const [isLink, setIsLink] = useState<string>('');
   const [isSelectedLink, setIsSelectedLink] = useState<string>('');
 
-  const toggle = () : void => setIsOpen(prev => !prev);
+  const toggle = () : void => setIsSideBar((prev : boolean) => !prev);
 
    return <div className="d-flex container-sidebar" >
-    <div className="sidebar vh-100" style={{width: isOpen ? "200px" : "50px"}}>
+    <div className="sidebar vh-100" style={{width: isSideBar ? "200px" : "50px"}}>
       <div className="top_section d-flex align-items-center">
-        <h1 className={`logo ${isOpen ? 'd-block' : 'd-none'}`}>Logo</h1>
-        <div className={`bars`} style={{marginLeft: isOpen ? "50px" : "0px"}}>
-          {isOpen ? <VscChromeClose onClick={toggle}/> : <FaBars onClick={toggle} />}
+        <h1 className={`logo ${isSideBar ? 'd-block' : 'd-none'}`}>Logo</h1>
+        <div className={`bars`} style={{marginLeft: isSideBar ? "50px" : "0px"}}>
+          {isSideBar ? <VscChromeClose onClick={toggle}/> : <FaBars onClick={toggle} />}
         </div>
       </div>
       {Sidebardata.map((item, key) => (
@@ -29,11 +30,10 @@ export default function LeftSideBar({children} : any){
             onMouseLeave={()=> setIsLink('')}
             onClick={()=> setIsSelectedLink(item.name)}
           >
-            <div className={`icon ${isOpen ? 'd-block' : 'd-none' }`}>{item.icon}</div>
-            <div className={`link_text mt-1 ${isOpen ? 'd-block' : 'd-none' }`}>{item.name}</div>
+            <div className={`icon ${isSideBar ? 'd-block' : 'd-none' }`}>{item.icon}</div>
+            <div className={`link_text mt-1 ${isSideBar ? 'd-block' : 'd-none' }`}>{item.name}</div>
           </Link>
         ))}
     </div>
-    <main className="w-100">{children}</main>
    </div>
 };

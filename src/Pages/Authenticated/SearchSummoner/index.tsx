@@ -1,23 +1,26 @@
 import { useCallback, useState } from "react";
 import { Row, Col, ButtonGroup } from "reactstrap";
+import {Form} from '@unform/web';
 import {toast} from 'react-toastify';
-import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
+import Modal from '@Components/Modal';
+import {useAppContext} from '@Components/container';
+import {BasicInput} from '@Components/Form/index';
 import { GetSummoner } from "@Hooks/api";
 import { InsertSummoner } from "@Hooks/api";
 import { SummonerData } from "@Interfaces/index";
-import Modal from '@Components/Modal';
  
 export default function SearchSummoner(): JSX.Element {
-  const [summoner, setSummoner] = useState<string>("");
+  const {setIsSideBar} = useAppContext();
   const [summonerData, setSummonerData] = useState<any>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isSaving, setIsSaving] = useState<boolean>(false);
   const [isModal, setIsModal] = useState<boolean>(false);
 
-  const handleSearch = useCallback(async () => {
-    if(!summoner) return toast.error('Username cannot be empty ');
+  const handleSearch = useCallback(async ({summoner} : any) => {
+    if(!summoner) return toast.error('Username não pode ser vazio ');
+    setIsSideBar(false);
     setIsLoading(true);
 
     const {data: { puuid, name, profileIconId, summonerLevel }} = await GetSummoner(summoner);
@@ -33,7 +36,7 @@ export default function SearchSummoner(): JSX.Element {
     });
     setIsLoading(false);
     setIsModal(true);
-  }, [summoner, isLoading]);
+  }, [isLoading]);
 
   const handleInsertSumonner = useCallback(async () => {
     setIsSaving(true);
@@ -55,22 +58,23 @@ export default function SearchSummoner(): JSX.Element {
   return (
       <div className="vh-100 w-100 d-flex flex-column align-items-center justify-content-center">
         <div className="d-flex justify-content-center align-items-center">
-          <TextField
-            id="outlined-basic"
-            label="Username"
-            variant="outlined"
-            onChange={(e) => setSummoner(e.target.value)}
-          />
-          <Button
-            onClick={handleSearch}
-            variant="contained"
-            className="p-3 rounded-0"
-            disabled={!!summonerData}
-          >
-            {isLoading ? "loading..." : "Search"}
-          </Button>
+          <Form onSubmit={handleSearch}>
+            <BasicInput
+              id="outlined-basic"
+              label="Username"
+              variant="outlined"
+              name="summoner"
+              />
+            <Button
+              type="submit"
+              variant="contained"
+              className="p-3 rounded-0"
+              >
+              {isLoading ? "loading..." : "Search"}
+            </Button>
+          </Form>
         </div>
-        <Modal isOpen={isModal} title="Is that you?">
+        <Modal isOpen={isModal} title="É quem você procura?">
             <Row className="pt-4">
               <Col>
                 <img src={summonerData?.img} width='60px' className="rounded"/>
